@@ -1,6 +1,6 @@
 package aluraOrientacaoObjeto;
 
-public class Cnpj {
+public class Cnpj implements Documento {
     private String valor;
 
     public Cnpj(String valor) {
