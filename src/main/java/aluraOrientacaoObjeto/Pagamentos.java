@@ -51,7 +51,6 @@ public class Pagamentos implements Iterable<Pagamento> {
       this.pagamentos.add(pagamento);
     }
 
-    @Override
     public Iterator<Pagamento> iterator() {
       return this.pagamentos.iterator();
     }

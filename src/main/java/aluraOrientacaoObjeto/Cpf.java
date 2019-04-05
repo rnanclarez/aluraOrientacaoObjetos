@@ -29,11 +29,13 @@ public class Cpf implements Documento{
     }
 
     private boolean primeiroDigitoVerificadoEstaCorreto() {
+    	return true;
       // Calcula o primeiro digito verificador do CPF se
       // ele estiver correto e compara com o valor preenchido
     }
 
     private boolean segundoDigitoVerificadorEstaCorreto() {
+    	return true;
       // Calcula o segundo digito verificador do CPF se
       // ele estiver correto e compara com o valor preenchido
     }
