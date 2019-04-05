@@ -10,9 +10,15 @@ public class Divida {
 	private Cnpj cnpjCredor;
 	private Pagamentos pagamentos = new Pagamentos();
 	
-	public double valorAPagar() {
+	
+	public double getValorAPagar() {
         return this.total - this.pagamentos.getValorPago();
       }
+	
+	 public void registra(Pagamento pagamento) {
+         // a classe agora delega o registro de um pagamento para seu atributo pagamentos
+         pagamentos.registra(pagamento); 
+	 }
 
 	public boolean cnpjValido() {
 		return primeiroDigitoVerificadorDoCnpj() == primeiroDigitoCorretoParaCnpj()
@@ -71,8 +77,6 @@ public class Divida {
 		this.total = total;
 	}
 
-	public Pagamentos getPagamentos() {
-		return pagamentos;
-	}
+	
 
 }

@@ -2,16 +2,18 @@ package aluraOrientacaoObjeto;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 
-public class Pagamentos extends ArrayList<Pagamento> {
+public class Pagamentos {
+    private ArrayList<Pagamento> pagamentos = new ArrayList<Pagamento>();
 
 	private double valorPago;
 
 	public Pagamentos pagamentosAntesDe(Calendar data) {
 		Pagamentos pagamentosFiltrados = new Pagamentos();
-		for (Pagamento pagamento : this) {
+		for (Pagamento pagamento : this.pagamentos) {
 			if (pagamento.getData().before(data)) {
-				pagamentosFiltrados.add(pagamento);
+				pagamentosFiltrados.pagamentos.add(pagamento);
 			}
 		}
 		return pagamentosFiltrados;
@@ -19,9 +21,9 @@ public class Pagamentos extends ArrayList<Pagamento> {
 
 	public Pagamentos pagamentosDo(String cnpjPagador) {
 		Pagamentos pagamentosFiltrados = new Pagamentos();
-		for (Pagamento pagamento : this) {
+		for (Pagamento pagamento : this.pagamentos) {
 			if (pagamento.getCnpjPagador().equals(cnpjPagador)) {
-				pagamentosFiltrados.add(pagamento);
+				pagamentosFiltrados.pagamentos.add(pagamento);
 			}
 		}
 		return pagamentosFiltrados;
@@ -29,25 +31,17 @@ public class Pagamentos extends ArrayList<Pagamento> {
 
 	public Pagamentos pagamentosComValorMaiorQue(double valorMinimo) {
 		Pagamentos pagamentosFiltrados = new Pagamentos();
-		for (Pagamento pagamento : this) {
+		for (Pagamento pagamento : this.pagamentos) {
 			if (pagamento.getValor() > valorMinimo) {
-				pagamentosFiltrados.add(pagamento);
+				pagamentosFiltrados.pagamentos.add(pagamento);
 			}
 		}
 		return pagamentosFiltrados;
 	}
 
 	public void registra(Pagamento pagamento) {
-		double valor = pagamento.getValor();
-		if (valor < 0) {
-			throw new IllegalArgumentException("Valor invalido para pagamento");
-		}
-		if (valor > 100) {
-			valor = valor - 8;
-		}
-		this.valorPago += valor;
-		this.add(pagamento);
-	}
+        this.pagamentos.add(pagamento);
+      }
 
 	public double getValorPago() {
 		return this.valorPago;
